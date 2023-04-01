@@ -14,7 +14,7 @@ namespace Dal
         public static void RunCommand(string sqlQuery, SetDataReader_delegate func)
         {
             //string connectionString = ConfigurationManager.AppSettings["xnesData"];
-            string connectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=xnesData;Data Source=DESKTOP-IUUO58L\SQLEXPRESS";
+            string connectionString = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=marketData;Data Source=DESKTOP-IUUO58L\SQLEXPRESS";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

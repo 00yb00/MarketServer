@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace Model.models
 {
-    public class Product
+    public class ViewProduct
     {
         public int id { get; set; }
         public string name { get; set; }
         public double price { get; set; }
         public int amount { get; set; }
-        public int departmentId { get; set; }
-        public Product()
+        public string departmentName { get; set; }
+        public ViewProduct()
         {
 
         }
-        public Product(int id, string name, double price, int amount, int departmentId)
+        public ViewProduct(int id, string name, double price, int amount, string departmentName)
         {
             this.id = id;
             this.name = name;
             this.price = price;
             this.amount = amount;
-            this.departmentId = departmentId;
+            this.departmentName = departmentName;
         }
     }
 }

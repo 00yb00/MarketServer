@@ -24,6 +24,10 @@ namespace Entities
         {
          return convertToProduct(productSql.GetProductsSql());
         }
+        public List<ViewProduct> GetViewProductsEntities()
+        {
+            return convertToViewProduct(productSql.GetViewProductsSql());
+        }
         public string AddProductEntities(Product prod)
         {
 
@@ -47,6 +51,25 @@ namespace Entities
                 for (int i = 0; i < dtbl.Rows.Count; i++)
                 {
                     Product prod = new Product();
+                    prod.name = dtbl.Rows[i]["productName"].ToString();
+                    prod.price = Convert.ToDouble(dtbl.Rows[i]["price"]);
+                    prod.amount = Convert.ToInt32(dtbl.Rows[i]["amount"]);
+                    prod.departmentId = Convert.ToInt32(dtbl.Rows[i]["departmentId"]);
+                    prod.id = Convert.ToInt32(dtbl.Rows[i]["id"]);
+                    prods.Add(prod);
+                }
+            }
+            return prods;
+
+        }
+        public List<ViewProduct> convertToViewProduct(DataTable dtbl)
+        {
+            List<ViewProduct> prods = new List<ViewProduct>();
+            if (dtbl.Rows.Count > 0)
+            {
+                for (int i = 0; i < dtbl.Rows.Count; i++)
+                {
+                    ViewProduct prod = new ViewProduct();
                     prod.name = dtbl.Rows[i]["productName"].ToString();
                     prod.price = Convert.ToDouble(dtbl.Rows[i]["price"]);
                     prod.amount = Convert.ToInt32(dtbl.Rows[i]["amount"]);

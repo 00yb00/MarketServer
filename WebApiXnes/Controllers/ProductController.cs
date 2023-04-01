@@ -21,6 +21,15 @@ namespace WebApiXnes.Controllers
             productList = productEntities.GetProductsEntities();
             return new JsonResult(productList);
         }
+        [HttpGet("GetProductVeiw")]
+
+        public JsonResult getViewProduct()
+        {
+            List<ViewProduct> productList = new List<ViewProduct>();
+            ProductEntities productEntities = new ProductEntities();
+            productList = productEntities.GetViewProductsEntities();
+            return new JsonResult(productList);
+        }
         [HttpPost("PostProduct")]
         public JsonResult postProduct(Product prod)
         {

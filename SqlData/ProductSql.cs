@@ -32,12 +32,27 @@ namespace SqlData
 
             return tbl;
         }
+        public DataTable GetViewProductsSql()
+        {
+            DataTable tbl = new DataTable();
+            try
+            {
+                string query = @"exec getAllproductView";
+                SqlQuery.RunCommand(query, tbl.Load);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return tbl;
+        }
         public string AddProductSql(Product prod)
         {
             try
             {
                 DataTable tbl = new DataTable();
-                string query = $"exec addProduct '{prod.name}','{prod.price}','{prod.amount}','{ prod.departmentName}'";
+                string query = $"exec addProduct '{prod.name}','{prod.price}','{prod.amount}','{ prod.departmentId}'";
                 SqlQuery.RunCommand(query, tbl.Load);
             }
             catch (Exception ex)
@@ -53,7 +68,7 @@ namespace SqlData
             try
             {
                 DataTable tbl = new DataTable();
-                string query = $"exec updateProduct '{prod.id}','{prod.name}','{prod.price}','{prod.amount}','{ prod.departmentName}'";
+                string query = $"exec updateProduct '{prod.id}','{prod.name}','{prod.price}','{prod.amount}','{ prod.departmentId}'";
                 SqlQuery.RunCommand(query, tbl.Load);
             }
             catch (Exception ex)
